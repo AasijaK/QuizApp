@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="hero">
+
+    <h1>Welcome to QuizArena</h1>
+
+    <p>
+        Test your knowledge and compete through collaborative quizzes.
+    </p>
+
+</div>
+
+<div class="card-grid">
+
+    <div class="dashboard-card">
+
+        <h2>Question Bank</h2>
+
+        <p>
+            Browse questions contributed by students.
+        </p>
+
+        <a href="{% url 'questions' %}"
+           class="btn">
+            Browse Questions
+        </a>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <h2>Contribute</h2>
+
+        <p>
+            Add your own MCQ to the collaborative question bank.
+        </p>
+
+        <a href="{% url 'add_question' %}"
+           class="btn">
+            Add Question
+        </a>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <h2>Quiz Competition</h2>
+
+        <p>
+            Select a subject and challenge yourself.
+        </p>
+
+        <a href="{% url 'quiz_setup' %}"
+           class="btn">
+            Start Quiz
+        </a>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <h2>My Results</h2>
+
+        <p>
+            View your previous quiz performance.
+        </p>
+
+        <a href="{% url 'history' %}"
+           class="btn">
+            View History
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="result-container">
+
+    <div class="result-card">
+
+        <h1>Quiz Completed!</h1>
+
+        <p class="subject-name">
+            {{ subject.name }}
+        </p>
+
+        <div class="score-circle">
+
+            {{ score|floatformat:0 }}%
+
+        </div>
+
+        <div class="result-grid">
+
+            <div>
+
+                <h2>
+                    {{ total }}
+                </h2>
+
+                <p>
+                    Total Questions
+                </p>
+
+            </div>
+
+            <div class="correct">
+
+                <h2>
+                    {{ correct }}
+                </h2>
+
+                <p>
+                    Correct Answers
+                </p>
+
+            </div>
+
+            <div class="wrong">
+
+                <h2>
+                    {{ wrong }}
+                </h2>
+
+                <p>
+                    Wrong Answers
+                </p>
+
+            </div>
+
+        </div>
+
+        <a
+            href="{% url 'quiz_setup' %}"
+            class="btn">
+
+            Take Another Quiz
+
+        </a>
+
+        <a
+            href="{% url 'dashboard' %}"
+            class="btn secondary">
+
+            Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

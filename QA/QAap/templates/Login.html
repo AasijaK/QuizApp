@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <h1>QuizArena</h1>
+
+        <p>Collaborative MCQ Quiz Competition</p>
+
+        <h2>Login</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label>Username</label>
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter username"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p>
+            New student?
+
+            <a href="{% url 'register' %}">
+                Create Account
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

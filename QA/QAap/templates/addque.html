@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container large">
+
+    <h1>Add MCQ</h1>
+
+    <p>
+        Your question will become part of the collaborative question bank.
+    </p>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Add Question
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

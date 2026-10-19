@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h1>Collaborative Question Bank</h1>
+
+    <a href="{% url 'add_question' %}"
+       class="btn">
+
+        + Add Question
+
+    </a>
+
+</div>
+
+<form method="GET"
+      class="search-box">
+
+    <input
+        type="text"
+        name="q"
+        placeholder="Search questions..."
+        value="{{ query }}"
+    >
+
+    <select name="subject">
+
+        <option value="">
+            All Subjects
+        </option>
+
+        {% for subject in subjects %}
+
+        <option value="{{ subject.id }}">
+
+            {{ subject.name }}
+
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+<div class="question-grid">
+
+{% for question in questions %}
+
+<div class="question-card">
+
+    <div class="question-header">
+
+        <span class="badge">
+            {{ question.subject.name }}
+        </span>
+
+        <span class="difficulty">
+            {{ question.difficulty }}
+        </span>
+
+    </div>
+
+    <h3>
+        {{ forloop.counter }}.
+        {{ question.question_text }}
+    </h3>
+
+    <div class="options">
+
+        <p>
+            <b>1.</b>
+            {{ question.option1 }}
+        </p>
+
+        <p>
+            <b>2.</b>
+            {{ question.option2 }}
+        </p>
+
+        <p>
+            <b>3.</b>
+            {{ question.option3 }}
+        </p>
+
+        <p>
+            <b>4.</b>
+            {{ question.option4 }}
+        </p>
+
+    </div>
+
+    <p class="contributor">
+
+        Contributed by:
+        <strong>
+            {{ question.contributor.username }}
+        </strong>
+
+    </p>
+
+</div>
+
+{% empty %}
+
+<div class="empty">
+
+    <h3>No questions found.</h3>
+
+    <p>
+        Try another search or add a new question.
+    </p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>QuizArena</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        QuizArena
+    </div>
+
+    {% if user.is_authenticated %}
+
+    <nav>
+
+        {% if user.is_staff %}
+
+            <a href="{% url 'admin_dashboard' %}">
+                Dashboard
+            </a>
+
+            <a href="{% url 'subjects' %}">
+                Subjects
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'dashboard' %}">
+                Dashboard
+            </a>
+
+            <a href="{% url 'questions' %}">
+                Question Bank
+            </a>
+
+            <a href="{% url 'add_question' %}">
+                Add Question
+            </a>
+
+            <a href="{% url 'quiz_setup' %}">
+                Take Quiz
+            </a>
+
+            <a href="{% url 'history' %}">
+                History
+            </a>
+
+        {% endif %}
+
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+
+    </nav>
+
+    {% endif %}
+
+</header>
+
+<main>
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="message">
+
+                {{ message }}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 QuizArena | Collaborative Quiz Competition
+    </p>
+
+</footer>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="quiz-container">
+
+    <div class="quiz-top">
+
+        <span>
+            Question {{ number }} of {{ total }}
+        </span>
+
+        <span id="timer">
+            60
+        </span>
+
+    </div>
+
+    <div class="quiz-card">
+
+        <h2>
+
+            {{ question.question_text }}
+
+        </h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="answer"
+                    value="1"
+                    required
+                >
+
+                {{ question.option1 }}
+
+            </label>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="answer"
+                    value="2"
+                >
+
+                {{ question.option2 }}
+
+            </label>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="answer"
+                    value="3"
+                >
+
+                {{ question.option3 }}
+
+            </label>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="answer"
+                    value="4"
+                >
+
+                {{ question.option4 }}
+
+            </label>
+
+            <button
+                type="submit"
+                class="next-btn">
+
+                {% if number == total %}
+                    Finish Quiz
+                {% else %}
+                    Next Question
+                {% endif %}
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
